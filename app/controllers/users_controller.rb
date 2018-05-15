@@ -17,14 +17,28 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    p params
+    p current_user
+    if !current_user
+      redirect_to new_user_session_path
+    elsif params[:id].nil?
+      @user = current_user
+    else
+      @user = User.find(params[:id])
   end
+end
 
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
     @user.save
     redirect_to user_path(@user)
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to new_user_session_path
   end
 
   private

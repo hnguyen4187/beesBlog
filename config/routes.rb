@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # devise_for :users, controllers: {
-  #       sessions: 'users/sessions'
-  #     }
+  # devise_for :users
+   devise_for :users, controllers: {
+         sessions: 'users/sessions'
+       }
 
    # get 'comments/index'
    # get 'comments/show'
@@ -21,5 +21,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :users
   resources :comments
+
+  root 'users#show'
 
 end
