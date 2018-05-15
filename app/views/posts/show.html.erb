@@ -1,5 +1,23 @@
 <h1>Posts#show</h1>
 <p>Find me in app/views/posts/show.html.erb</p>
 
+<div>
   <p>Title: <%= @post.title %></p>
   <p>Content: <%= @post.content %></p>
+</div>
+
+
+<%= form_for Comment.new do |f| %>
+<%= hidden_field_tag "[comment]post_id", @post.id %>
+    <p>Comment: </p>
+<%= f.text_area :content %>
+<%= f.submit "Submit" %>
+<%end%>
+
+<div>
+  <% @comments.each do |comment| %>
+    <p><% comment.user.fname %></p>
+    <p>Comment: <%= comment.content %></p>
+    <hr>
+  <% end %>
+</div>
