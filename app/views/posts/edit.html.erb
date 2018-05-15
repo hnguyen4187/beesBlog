@@ -1,7 +1,6 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
 
-
+<div class = "container" >
+  <% if current_user.id == @post.user.id %>
   <%= form_for @post do |f| %>
     <%= f.label :title, "Title: " %>
     <%= f.text_field :title %>
@@ -11,3 +10,5 @@
     <br>
     <%= f.submit %>
   <% end %>
+  <% end %>
+</div>
